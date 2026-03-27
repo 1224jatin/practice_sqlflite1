@@ -22,7 +22,7 @@ return _db!;
      await db.execute( '''CREATE TABLE Task(
       ID INTEGER PRIMARY KEY AUTOINCREMENT ,
       Task TEXT NOT NULL,
-      DESRIPTION TEXT NOT NULL
+      Decription TEXT NOT NULL
       );''');
     }
     );
@@ -31,6 +31,6 @@ return _db!;
   Future<void> insertTask(Task task) async {
     final dbClient = await db;
     dbClient.insert("Task", task.ToMap());
-
-}
+    dbClient.insert("Decription", task.ToMap());
+  }
 }

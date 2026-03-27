@@ -1,8 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:path/path.dart';
+import 'package:provider/provider.dart';
+import 'package:sqlflite_practice1/view_model/vm_sql.dart';
 
 void main() async {
 runApp(
-  MyApp()
+  ChangeNotifierProvider(
+      create: (context)=> VmSql(),
+    child: const MyApp(),
+  )
 );
 }
 

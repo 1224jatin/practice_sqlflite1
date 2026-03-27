@@ -1,5 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:sqlflite_practice1/view/add_screen.dart';
+import 'package:sqlflite_practice1/view_model/vm_sql.dart';
 
 class HomeScreen extends StatefulWidget{
   @override
@@ -11,6 +14,7 @@ class _HomeScreen extends State<HomeScreen>{
 
   @override
   Widget build(BuildContext context) {
+    final vm = Provider.of<VmSql>(context);
    return Scaffold(body:
      Center(child:
        Column(mainAxisAlignment: MainAxisAlignment.center,
@@ -26,9 +30,23 @@ class _HomeScreen extends State<HomeScreen>{
          ),
 
          ),
+         SizedBox(height: 10),
          Card(
-
-         )
+           color: Colors.blue,
+           child: TextField(
+             controller: taskDecriptioncontroller,
+             decoration:  InputDecoration(
+               label: const Text("Task Discription"),
+             ),
+           ),
+         ),
+         ElevatedButton(onPressed: (){
+           if(taskNamecontroller.text != null &&
+               taskDecriptioncontroller.text != null){
+             Navigator.push(context,
+                 MaterialPageRoute(builder: (context)=> AddScreen()));
+           }
+         }, child: const Text("submit"))
        ],
        ),
 
