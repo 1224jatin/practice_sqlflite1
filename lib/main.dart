@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:path/path.dart';
 import 'package:provider/provider.dart';
+import 'package:sqlflite_practice1/view/home_Screen.dart';
 import 'package:sqlflite_practice1/view_model/vm_sql.dart';
 
 void main() async {
@@ -23,7 +24,7 @@ class MyApp extends StatelessWidget {
 
         colorScheme: .fromSeed(seedColor: Colors.deepPurple),
       ),
-      home:  MyHomePage(),
+      home:  HomeScreen(),
     );
   }
 }

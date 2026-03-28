@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:sqlflite_practice1/model/model.dart';
 import 'package:sqlflite_practice1/view/add_screen.dart';
 import 'package:sqlflite_practice1/view_model/vm_sql.dart';
 
@@ -43,6 +44,9 @@ class _HomeScreen extends State<HomeScreen>{
          ElevatedButton(onPressed: (){
            if(taskNamecontroller.text != null &&
                taskDecriptioncontroller.text != null){
+             setState(() {
+               vm.addTask(Task(taskName: taskNamecontroller.text, taskDescription: taskDecriptioncontroller.text));
+             });
              Navigator.push(context,
                  MaterialPageRoute(builder: (context)=> AddScreen()));
            }

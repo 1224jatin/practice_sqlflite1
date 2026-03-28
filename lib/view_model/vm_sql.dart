@@ -10,4 +10,7 @@ class VmSql extends ChangeNotifier{
     notifyListeners();
 
   }
+  Future<List<Map<String, dynamic>>> getTasks() async {
+    return  await dbHelper.selectTask();
+  }
 }

@@ -30,7 +30,15 @@ return _db!;
 
   Future<void> insertTask(Task task) async {
     final dbClient = await db;
-    dbClient.insert("Task", task.ToMap());
-    dbClient.insert("Decription", task.ToMap());
+    dbClient.insert("Task", task.ToMap(task));
   }
+
+  Future<List<Map<String,dynamic>>> selectTask() async {
+    final dbClient = await db ;
+    return  await dbClient.query("Task");
+
+  }
+
+
+
 }

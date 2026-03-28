@@ -6,7 +6,7 @@ class Task{
     required this.taskName,
     required this.taskDescription
 });
-  Map<String, dynamic> ToMap() {
+  Map<String, dynamic> ToMap(Task task ) {
     return {
       "taskName" : taskName,
       "taskDescription" : taskDescription
