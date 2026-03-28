@@ -12,4 +12,11 @@ class Task{
       "taskDescription" : taskDescription
     };
   }
+
+  factory Task.fromMap(Map<String,dynamic> map){
+    return Task (
+      taskName: map['taskName'],
+      taskDescription: map['taskDescription']
+    );
+  }
 }

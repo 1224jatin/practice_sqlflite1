@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 
@@ -19,10 +21,10 @@ return _db!;
     return await openDatabase(path,
     version: 1,
     onCreate: (db,version) async {
-     await db.execute( '''CREATE TABLE Task(
+     await db.execute( '''CREATE TABLE Tasks(
       ID INTEGER PRIMARY KEY AUTOINCREMENT ,
-      Task TEXT NOT NULL,
-      Decription TEXT NOT NULL
+      taskName TEXT NOT NULL,
+      taskDescription TEXT NOT NULL
       );''');
     }
     );
@@ -30,12 +32,13 @@ return _db!;
 
   Future<void> insertTask(Task task) async {
     final dbClient = await db;
-    dbClient.insert("Task", task.ToMap(task));
+    dbClient.insert("Tasks", task.ToMap(task));
   }
 
-  Future<List<Map<String,dynamic>>> selectTask() async {
-    final dbClient = await db ;
-    return  await dbClient.query("Task");
+  Future<List<Task>>selectTask() async{
+    final dbClient = await db;
+    final List<Map<String,dynamic>> maps = await dbClient.query("Tasks");
+    return maps.map((e)=> Task.fromMap(e)).toList();
 
   }
 

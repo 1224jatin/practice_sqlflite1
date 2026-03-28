@@ -6,6 +6,8 @@ import 'package:provider/provider.dart';
 import 'package:sqlflite_practice1/db_helper/db_helper.dart';
 import 'package:sqlflite_practice1/view_model/vm_sql.dart';
 
+import '../model/model.dart';
+
 class AddScreen extends StatefulWidget{
   @override
   State<StatefulWidget> createState() => _AddScreen();
@@ -13,7 +15,7 @@ class AddScreen extends StatefulWidget{
 class _AddScreen extends State<AddScreen>{
   late final vm = Provider.of<VmSql>(context);
   final dbHelper=DbHelper();
-  List<Map<String, dynamic>> myTasks= [];
+  List<Task> myTasks= [];
 
   @override void initState() {
     super.initState();
@@ -28,17 +30,14 @@ class _AddScreen extends State<AddScreen>{
   }
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body:
-      Center(
-        child:Expanded(
-            child: Column(
+    return Scaffold(
+        body: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            ListView.builder(itemBuilder: (context,index){
+            Expanded(child: ListView.builder(itemBuilder: (context,index){
               return Container(
-                height: 400,
-                width: 600,
+                margin: EdgeInsets.symmetric(horizontal: 10,vertical: 6),
                 child: Card(
                   color: Colors.blue,
                   child: Column(
@@ -51,8 +50,17 @@ class _AddScreen extends State<AddScreen>{
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           const Text("task Name"),
-                          Text(myTasks[index]["taskName"])
+                          Text(myTasks[index].taskName)
                         ],
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          const Text("Description"),
+                          Text(myTasks[index].taskDescription)
+                        ],
+
                       )
                     ],
                   ),
@@ -62,11 +70,11 @@ class _AddScreen extends State<AddScreen>{
 
             },
               itemCount: myTasks.length,
-            )
+            ))
+
           ],
-        ))
-      ),
-    );
+        ));
+
   }
 
 }
