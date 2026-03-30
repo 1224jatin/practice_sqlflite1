@@ -35,12 +35,17 @@ return _db!;
     dbClient.insert("Tasks", task.ToMap(task));
   }
 
-  Future<List<Task>>selectTask() async{
+  Future<List<Map<String,dynamic>>>selectTask() async{
     final dbClient = await db;
-    final List<Map<String,dynamic>> maps = await dbClient.query("Tasks");
-    return maps.map((e)=> Task.fromMap(e)).toList();
+    return  await dbClient.query("Tasks");
+
 
   }
+  Future<void> deleteTask(int id) async {
+    final dbClinet = await db ;
+    dbClinet.delete("Task", where: "id=?",whereArgs: [id]);
+  }
+
 
 
 
