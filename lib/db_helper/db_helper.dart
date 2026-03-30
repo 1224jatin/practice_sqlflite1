@@ -43,7 +43,13 @@ return _db!;
   }
   Future<void> deleteTask(int id) async {
     final dbClinet = await db ;
-    dbClinet.delete("Tasks", where: "id=?",whereArgs: [0]);
+    dbClinet.delete("Tasks", where: "id=?",whereArgs: [id]);
+
+  }
+
+  Future<void> updateTask(Map<String,dynamic> data ) async{
+    final dbClient = await db ;
+    dbClient.update("Tasks", data,where:"id=?", whereArgs: data["id"]);
   }
 
 
