@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:path/path.dart';
 import 'package:provider/provider.dart';
+import 'package:sqlflite_practice1/view/bottomNavigationBar.dart';
 import 'package:sqlflite_practice1/view/home_Screen.dart';
 import 'package:sqlflite_practice1/view_model/vm_sql.dart';
 
@@ -24,7 +25,7 @@ class MyApp extends StatelessWidget {
 
         colorScheme: .fromSeed(seedColor: Colors.deepPurple),
       ),
-      home:  HomeScreen(),
+      home:  Bottomnavigationbar(),
     );
   }
 }

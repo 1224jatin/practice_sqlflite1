@@ -22,7 +22,7 @@ return _db!;
     version: 1,
     onCreate: (db,version) async {
      await db.execute( '''CREATE TABLE Tasks(
-      ID INTEGER PRIMARY KEY AUTOINCREMENT ,
+      id INTEGER PRIMARY KEY AUTOINCREMENT ,
       taskName TEXT NOT NULL,
       taskDescription TEXT NOT NULL
       );''');
@@ -43,7 +43,7 @@ return _db!;
   }
   Future<void> deleteTask(int id) async {
     final dbClinet = await db ;
-    dbClinet.delete("Task", where: "id=?",whereArgs: [id]);
+    dbClinet.delete("Tasks", where: "id=?",whereArgs: [0]);
   }
 
 
