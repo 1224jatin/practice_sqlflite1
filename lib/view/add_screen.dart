@@ -17,8 +17,8 @@ class _AddScreen extends State<AddScreen>{
   late final vm = Provider.of<VmSql>(context);
   final dbHelper=DbHelper();
   List<Map<String,dynamic>> myTasks= [];
-  TextEditingController updateNameController = TextEditingController();
-  TextEditingController updateDesriptionController = TextEditingController();
+  late TextEditingController updateNameController;
+  late TextEditingController updateDesriptionController;
 
   @override void initState() {
     super.initState();
