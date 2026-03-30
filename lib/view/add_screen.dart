@@ -130,6 +130,7 @@ class _AddScreen extends State<AddScreen>{
               // update button
               ElevatedButton(onPressed: (){
                 dbHelper.updateTask({
+                  "id":task["id"],
                   "taskName":updateNameController.text,
                   "taskDescription":updateDesriptionController.text
                 });

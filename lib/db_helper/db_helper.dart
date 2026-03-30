@@ -49,7 +49,7 @@ return _db!;
 
   Future<void> updateTask(Map<String,dynamic> data ) async{
     final dbClient = await db ;
-    dbClient.update("Tasks", data,where:"id=?", whereArgs: data["id"]);
+    dbClient.update("Tasks", data,where:"id=?", whereArgs: [data["id"]]);
   }
 
 
