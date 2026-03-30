@@ -70,9 +70,13 @@ class _AddScreen extends State<AddScreen>{
 
                           }, icon: Icon(Icons.edit_calendar_outlined)),
                           IconButton(onPressed: (){
-
+                            setState(() {
                               dbHelper.deleteTask(myTasks[index]["id"]);
                               loadTasks();
+
+                            });
+
+
 
                           }, icon: Icon(Icons.delete_forever))
                         ],
