@@ -45,7 +45,7 @@ class _HomeScreen extends State<HomeScreen>{
            if(taskNamecontroller.text != null &&
                taskDecriptioncontroller.text != null){
              setState(() {
-               vm.addTask(Task(taskName: "taskName", taskDescription: "taskDescription"));
+               vm.addTask(Task(taskName: taskNamecontroller.text, taskDescription: taskDecriptioncontroller.text));
              });
              Navigator.push(context,
                  MaterialPageRoute(builder: (context)=> AddScreen()));
