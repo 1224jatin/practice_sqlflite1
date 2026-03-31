@@ -11,4 +11,9 @@ class VmSql extends ChangeNotifier{
 
   }
 
+  void findtask(Task task){
+    dbHelper.findTask();
+    notifyListeners();
+  }
+
 }

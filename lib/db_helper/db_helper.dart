@@ -53,6 +53,9 @@ return _db!;
   }
 
 
-
+Future<List<Map<String,dynamic>>> findTask() async{
+    final dbClient = await db;
+    return await dbClient.query("Tasks",where: "taskName=?", whereArgs : ["gym"]);
+}
 
 }

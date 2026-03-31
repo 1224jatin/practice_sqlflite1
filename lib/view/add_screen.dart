@@ -8,6 +8,7 @@ import 'package:sqlflite_practice1/view/update_screen.dart';
 import 'package:sqlflite_practice1/view_model/vm_sql.dart';
 
 import '../model/model.dart';
+import 'find_task_screen.dart';
 
 class AddScreen extends StatefulWidget{
   @override
@@ -17,8 +18,8 @@ class _AddScreen extends State<AddScreen>{
   late final vm = Provider.of<VmSql>(context);
   final dbHelper=DbHelper();
   List<Map<String,dynamic>> myTasks= [];
-  late TextEditingController updateNameController;
-  late TextEditingController updateDesriptionController;
+   late TextEditingController updateNameController;
+   late TextEditingController updateDesriptionController ;
 
   @override void initState() {
     super.initState();
@@ -80,7 +81,8 @@ class _AddScreen extends State<AddScreen>{
                               await dbHelper.deleteTask(id);
                               loadTasks();
                             }
-                          }, icon: Icon(Icons.delete_forever))
+                          }, icon: Icon(Icons.delete_forever)),
+                          
                         ],
                       )
 
@@ -91,7 +93,10 @@ class _AddScreen extends State<AddScreen>{
               );
             },
               itemCount: myTasks.length,
-            ))
+            )),
+            FloatingActionButton(onPressed: (){
+              Navigator.push(context, MaterialPageRoute(builder: (context)=>FindTaskScreen() ));
+            },child:Icon(Icons.broken_image_outlined) ,)
 
           ],
         ));
@@ -99,6 +104,8 @@ class _AddScreen extends State<AddScreen>{
   }
 
    void showDialogbox(BuildContext context,Map<String,dynamic> task){
+     updateNameController = TextEditingController();
+     updateDesriptionController = TextEditingController();
 
     showDialog(context: context, builder: (context){
       return AlertDialog(
@@ -146,9 +153,6 @@ class _AddScreen extends State<AddScreen>{
           )
         ],
       );
-
-
     });
-
     }
     }
